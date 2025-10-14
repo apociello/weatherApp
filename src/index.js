@@ -14,9 +14,9 @@ async function getWeather(city) {
         const currentHour = new Date().getHours();
 
         console.log(`Date: ${weatherData.days[0].datetime}`);
+        console.log(weatherData.days[0].icon);
         console.log(`Max: ${weatherData.days[0].tempmax}º`);
         console.log(`Min: ${weatherData.days[0].tempmin}º`);
-        
         console.log(`Temp: ${weatherData.days[0].hours[8].temp}º`);
         console.log(`Precipitation: ${weatherData.days[0].hours[8].precipprob}%`);
         console.log(`Humidity: ${weatherData.days[0].hours[currentHour].humidity}%`);
