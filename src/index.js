@@ -1,5 +1,12 @@
 import "./style.css";
 
+const temperature = document.querySelector('.temperature');
+const date = document.querySelector('.date');
+const min = document.querySelector('.min');
+const max = document.querySelector('.max');
+const precipitation = document.querySelector('.precipitation');
+const humidity = document.querySelector('.humidity');
+const wind = document.querySelector('.wind');
 
 async function getWeather(city) {
 
@@ -9,21 +16,22 @@ async function getWeather(city) {
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
         }
-        const weatherData = await response.json();
 
+        const weatherData = await response.json();
         const currentHour = new Date().getHours();
 
-        console.log(`Date: ${weatherData.days[0].datetime}`);
+        date.textContent = `Date: ${weatherData.days[0].datetime}`;
+        max.textContent = `Max: ${Math.round(weatherData.days[0].tempmax)}`
+        min.textContent = `Min:${Math.round(weatherData.days[0].tempmin)}`
+        temperature.textContent = Math.round(weatherData.days[0].hours[currentHour].temp);
+        precipitation.textContent = `Precipitation: ${Math.round(weatherData.days[0].hours[currentHour].precipprob)}%`;
+        humidity.textContent = `Humidity: ${Math.round(weatherData.days[0].hours[currentHour].humidity)}%`;
+        wind.textContent = `Wind: ${weatherData.days[0].hours[currentHour].windspeed} km/h`;
+
         console.log(weatherData.days[0].icon);
-        console.log(`Max: ${weatherData.days[0].tempmax}º`);
-        console.log(`Min: ${weatherData.days[0].tempmin}º`);
-        console.log(`Temp: ${weatherData.days[0].hours[8].temp}º`);
-        console.log(`Precipitation: ${weatherData.days[0].hours[8].precipprob}%`);
-        console.log(`Humidity: ${weatherData.days[0].hours[currentHour].humidity}%`);
-        console.log(`Wind: ${weatherData.days[0].hours[currentHour].windspeed} km/h`)
 
     } catch (error) {
-            console.log('Enter a valid city');
+            console.log(error);
         }
 };
 
