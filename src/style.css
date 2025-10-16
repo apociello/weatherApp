@@ -59,4 +59,12 @@ p.city-title {
     font-size: 1.5rem;
     padding: 1rem;
     border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
