@@ -1,5 +1,15 @@
 import "./style.css";
 
+import clearDay from "./img/clear-day.svg";
+import clearNight from "./img/clear-night.svg";
+import cloudy from "./img/cloudy.svg";
+import partlyCloudyDay from "./img/partly-cloudy-day.svg";
+import partlyCloudyNight from "./img/partly-cloudy-night.svg";
+import rain from "./img/rain.svg";
+import snow from "./img/snow.svg";
+import windIcon from "./img/wind.svg";
+
+const weatherIcon = document.querySelector('img');
 const temperature = document.querySelector('.temperature');
 const date = document.querySelector('.date');
 const min = document.querySelector('.min');
@@ -28,7 +38,28 @@ async function getWeather(city) {
         humidity.textContent = `Humidity: ${Math.round(weatherData.days[0].hours[currentHour].humidity)}%`;
         wind.textContent = `Wind: ${weatherData.days[0].hours[currentHour].windspeed} km/h`;
 
-        console.log(weatherData.days[0].icon);
+        const icon = weatherData.days[0].hours[currentHour].icon;
+        if (icon === 'clear-day') {
+            weatherIcon.src = clearDay;
+        } else if ( icon === 'clear-night') {
+            weatherIcon.src = clearNight;
+        } else if (icon === 'cloudy') {
+            weatherIcon.src = cloudy;
+        } else if ( icon === 'partly-cloudy-day') {
+            weatherIcon.src = partlyCloudyDay;
+        } else if ( icon === 'partly-cloudy-night') {
+            weatherIcon.src = partlyCloudyNight;
+        } else if ( icon === 'rain') {
+            weatherIcon.src = rain;
+        } else if ( icon === 'snow') {
+            weatherIcon.src = snow;
+        } else if ( icon === 'wind') {
+            weatherIcon.src = windIcon;
+        } else {
+            weatherIcon.src = clearDay;
+        }
+
+        console.log(weatherData.days[0].hours[currentHour].icon);
 
     } catch (error) {
             console.log(error);
