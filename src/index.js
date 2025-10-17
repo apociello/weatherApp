@@ -1,4 +1,5 @@
 import "./style.css";
+import { DateTime } from 'luxon';
 
 import clearDay from "./img/clear-day.svg";
 import clearNight from "./img/clear-night.svg";
@@ -33,7 +34,12 @@ async function getWeather(city) {
         }
 
         const weatherData = await response.json();
-        const currentHour = new Date().getHours();
+
+        const timezone = weatherData.timezone;
+        const timeInCity = DateTime.now().setZone(timezone);
+        console.log(timeInCity.c.hour)
+        const currentHour = timeInCity.c.hour;
+        console.log(`${timeInCity.c.day}/${timeInCity.c.month}/${timeInCity.c.year}`)
 
         const icon = weatherData.days[0].hours[currentHour].icon;
         if (icon === 'clear-day') {
@@ -65,6 +71,7 @@ async function getWeather(city) {
             tempUnit = '°F';
             windUnit = 'mph'
         }
+
 
         cityTitle.textContent = city.toUpperCase();
         date.textContent = `Date: ${weatherData.days[0].datetime}`;
