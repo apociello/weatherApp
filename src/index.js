@@ -13,6 +13,7 @@ import windIcon from "./img/wind.svg";
 const weatherIcon = document.querySelector('img');
 const temperature = document.querySelector('.temperature');
 const date = document.querySelector('.date');
+const dayAndHour = document.querySelector('.day-hour');
 const min = document.querySelector('.min');
 const max = document.querySelector('.max');
 const precipitation = document.querySelector('.precipitation');
@@ -37,8 +38,10 @@ async function getWeather(city) {
 
         const timezone = weatherData.timezone;
         const timeInCity = DateTime.now().setZone(timezone);
+        const weekDay = timeInCity.toFormat('cccc, H:00');
         console.log(timeInCity.c.hour)
         const currentHour = timeInCity.c.hour;
+
         console.log(`${timeInCity.c.day}/${timeInCity.c.month}/${timeInCity.c.year}`)
 
         const icon = weatherData.days[0].hours[currentHour].icon;
@@ -74,7 +77,8 @@ async function getWeather(city) {
 
 
         cityTitle.textContent = city.toUpperCase();
-        date.textContent = `Date: ${weatherData.days[0].datetime}`;
+        date.textContent = `${timeInCity.c.day}/${timeInCity.c.month}/${timeInCity.c.year}`;
+        dayAndHour.textContent = `${weekDay} `
         max.textContent = `Max: ${Math.round(weatherData.days[0].tempmax)} ${tempUnit}`
         min.textContent = `Min: ${Math.round(weatherData.days[0].tempmin)} ${tempUnit}`
         temperature.textContent = Math.round(weatherData.days[0].hours[currentHour].temp);
