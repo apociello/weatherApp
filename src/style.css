@@ -32,10 +32,12 @@ p.city-title {
 
 .main {
     flex: 2;
+    width: 500px;
     display: flex;
-    justify-content: center;
+    padding: 1rem;
     align-items: center;
-    gap: 1rem
+    gap: 1rem;
+    border-bottom: 1px solid rgb(130, 130, 130);
 }
 
 .main img {
@@ -49,6 +51,7 @@ p.city-title {
 .units button {
     all: unset;
     cursor: pointer;
+    font-size: 2rem;
 }
 
 .additional {
@@ -58,7 +61,7 @@ p.city-title {
     color: rgb(104, 104, 104);
     font-size: 1.5rem;
     padding: 1rem;
-    border-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
     display: flex;
     align-items: center;
     justify-content: space-around;
