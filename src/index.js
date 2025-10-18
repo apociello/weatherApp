@@ -102,17 +102,27 @@ form.addEventListener('submit', (e) => {
     cityInput.value = '';
 });
 
-const fahrenheitBtn = document.getElementById('us');
 const celciusBtn = document.getElementById('metric');
+const fahrBtn = document.getElementById('us');
 
-fahrenheitBtn.addEventListener('click', () => {
-    unit = 'us';
-    getWeather(cityTitle.textContent);
-});
+function toggleUnit(unit1, unit2) {
+    unit1.classList.add('active');
+    unit2.classList.remove('active');
+}
 
 celciusBtn.addEventListener('click', () => {
     unit = 'metric';
     getWeather(cityTitle.textContent);
+    toggleUnit(celciusBtn, fahrBtn);
 });
 
+fahrBtn.addEventListener('click', () => {
+    unit = 'us';
+    getWeather(cityTitle.textContent);
+    toggleUnit(fahrBtn, celciusBtn);
+    
+});
+
+
 getWeather('madrid');
+
