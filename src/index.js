@@ -20,6 +20,7 @@ const precipitation = document.querySelector('.precipitation');
 const humidity = document.querySelector('.humidity');
 const wind = document.querySelector('.wind');
 const cityTitle = document.querySelector('.city-title');
+const searchError = document.getElementById('error')
 let unit = 'metric';
 let tempUnit;
 let windUnit;
@@ -86,10 +87,11 @@ async function getWeather(city) {
         humidity.textContent = `Humidity: ${Math.round(weatherData.days[0].hours[currentHour].humidity)}%`;
         wind.textContent = `Wind: ${weatherData.days[0].hours[currentHour].windspeed} ${windUnit}`;
 
-        
+        if (!searchError.classList.contains('hide')) searchError.classList.add('hide');
 
     } catch (error) {
             console.log(error);
+            if (searchError.classList.contains('hide')) searchError.classList.remove('hide')
         }
 };
 

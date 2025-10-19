@@ -49,10 +49,16 @@ body {
     justify-content: flex-end;
     margin-right: 2rem;
 }
+
+form {
+    position: relative;
+}
+
 input {
     font-size: 1rem;
-    padding: 0.1rem;
-
+    padding: 0.2rem 0.3rem;
+    border-radius: 3px;
+    border: 1px solid grey;
 }
 
 input:focus {
@@ -60,10 +66,30 @@ input:focus {
 }
 
 button.search {
+    all: unset;
     font-size: 1rem;
-    padding: 0.1rem;
+    padding: 0.2rem 0.3rem;
+    border-radius: 3px;
+    border: 1px solid grey;
+    color: rgb(212, 212, 212);
+    cursor: pointer;
 }
 
+button.search:active {
+    transform: scale(0.95);
+}
+
+#error {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    color: rgb(255, 0, 0);
+    font-size: 0.95rem;
+}
+
+.hide {
+    display: none;
+}
 
 p.city-title {
     font-size: 3rem;
