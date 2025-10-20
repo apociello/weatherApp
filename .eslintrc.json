@@ -4,6 +4,10 @@
     "browser": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "rules": {
     "no-console": "off",
     "prefer-destructuring": "off"

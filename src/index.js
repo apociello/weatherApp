@@ -1,12 +1,4 @@
 import "./style.css";
-import getWeather from './weather'
+import getWeather from "./weather";
 
-
-
-getWeather('madrid')
-
-
-
-
-
-
+getWeather("madrid");

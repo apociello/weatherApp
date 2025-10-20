@@ -1,13 +1,5 @@
 import { DateTime } from 'luxon';
 
-import clearDay from "./img/clear-day.svg";
-import clearNight from "./img/clear-night.svg";
-import partlyCloudyDay from "./img/partly-cloudy-day.svg";
-import partlyCloudyNight from "./img/partly-cloudy-night.svg";
-import rain from "./img/rain.svg";
-import snow from "./img/snow.svg";
-import windIcon from "./img/wind.svg";
-
 const weatherIcon = document.querySelector('img');
 const temperature = document.querySelector('.temperature');
 const date = document.querySelector('.date');
@@ -18,10 +10,15 @@ const precipitation = document.querySelector('.precipitation');
 const humidity = document.querySelector('.humidity');
 const wind = document.querySelector('.wind');
 const cityTitle = document.querySelector('.city-title');
-const searchError = document.getElementById('error')
+const searchError = document.getElementById('error');
+const form = document.querySelector('form');
+const cityInput = document.querySelector('.city');
+const celciusBtn = document.getElementById('metric');
+const fahrBtn = document.getElementById('us');
 let unit = 'metric';
 let tempUnit;
 let windUnit;
+
 
 
 export default async function getWeather(city) {
@@ -99,8 +96,7 @@ export default async function getWeather(city) {
         }
 };
 
-const form = document.querySelector('form');
-const cityInput = document.querySelector('.city');
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const city = cityInput.value.trim();
@@ -108,8 +104,7 @@ form.addEventListener('submit', (e) => {
     cityInput.value = '';
 });
 
-const celciusBtn = document.getElementById('metric');
-const fahrBtn = document.getElementById('us');
+
 
 function toggleUnit(unit1, unit2) {
     unit1.classList.add('active');
