@@ -13,6 +13,8 @@ const cityTitle = document.querySelector('.city-title');
 const searchError = document.getElementById('error');
 const form = document.querySelector('form');
 const cityInput = document.querySelector('.city');
+const loading = document.querySelector('.loading')
+const container = document.querySelector('.container')
 const celciusBtn = document.getElementById('metric');
 const fahrBtn = document.getElementById('us');
 let unit = 'metric';
@@ -24,6 +26,9 @@ let windUnit;
 export default async function getWeather(city) {
 
     try {
+
+        loading.classList.remove('hide');
+        container.classList.add('hide');
 
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${unit}&include=hours&key=T7W7PCFE2UAPXW6CZ6ZUNY9HV&contentType=json`);
         if (!response.ok) {
@@ -93,7 +98,10 @@ export default async function getWeather(city) {
     } catch (error) {
             console.log(error);
             if (searchError.classList.contains('hide')) searchError.classList.remove('hide')
-        }
+    } finally {
+        loading.classList.add('hide');
+        container.classList.remove('hide');
+    }
 };
 
 

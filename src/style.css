@@ -161,3 +161,8 @@ button.active {
 .date-box {
     font-size: 1.7rem;
 }
+
+.loading {
+    margin-top: 15rem;
+    text-align: center;
+}
