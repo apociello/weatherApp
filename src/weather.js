@@ -18,6 +18,14 @@ const fahrBtn = document.getElementById("us");
 let unit = "metric";
 let tempUnit;
 let windUnit;
+const loading = document.querySelector('.loading')
+const container = document.querySelector('.container')
+let firstLoad = true;
+
+if (firstLoad) {
+      loading.classList.remove('hide');
+      container.classList.add('hide');
+    }
 
 export default async function getWeather(city) {
   try {
@@ -91,6 +99,12 @@ export default async function getWeather(city) {
     console.log(error);
     if (searchError.classList.contains("hide"))
       searchError.classList.remove("hide");
+  } finally {
+    if (firstLoad) {
+      loading.classList.add('hide');
+      container.classList.remove('hide');
+      firstLoad = false; 
+    }
   }
 }
 
